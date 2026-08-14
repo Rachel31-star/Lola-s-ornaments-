@@ -1,690 +1,952 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Lola's Ornament | Timeless Beauty</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      background: #fffaf7;
-      color: #3d2830;
-      line-height: 1.6;
-    }
-
-    /* NAVIGATION */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 250, 247, 0.96);
-      border-bottom: 1px solid #ead5dc;
-      backdrop-filter: blur(10px);
-    }
-
-    nav {
-      max-width: 1100px;
-      margin: auto;
-      padding: 18px 25px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 27px;
-      font-weight: bold;
-      color: #b85c7a;
-      letter-spacing: 1px;
-    }
-
-    .logo span {
-      color: #5d414b;
-    }
-
-    nav ul {
-      display: flex;
-      gap: 25px;
-      list-style: none;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #5d414b;
-      font-size: 15px;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #c56b89;
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 88vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 70px 25px;
-      background:
-        linear-gradient(rgba(255,250,247,0.75), rgba(255,244,247,0.82)),
-        url("https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=1400&q=85")
-        center/cover;
-    }
-
-    .hero-content {
-      max-width: 720px;
-    }
-
-    .small-title {
-      color: #b85c7a;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 13px;
-      margin-bottom: 15px;
-    }
-
-    .hero h1 {
-      font-size: clamp(45px, 9vw, 82px);
-      line-height: 1;
-      margin-bottom: 25px;
-      color: #4a3039;
-    }
-
-    .hero h1 span {
-      color: #c56888;
-      font-style: italic;
-    }
-
-    .hero p {
-      font-size: 18px;
-      max-width: 570px;
-      margin: 0 auto 30px;
-      color: #634d55;
-    }
-
-    .button {
-      display: inline-block;
-      background: #bd6380;
-      color: white;
-      padding: 14px 28px;
-      border-radius: 30px;
-      text-decoration: none;
-      margin: 7px;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      transition: 0.3s;
-      box-shadow: 0 8px 20px rgba(189,99,128,0.2);
-    }
-
-    .button:hover {
-      transform: translateY(-3px);
-      background: #a94e6c;
-    }
-
-    .button-outline {
-      background: transparent;
-      color: #a94e6c;
-      border: 1px solid #bd6380;
-      box-shadow: none;
-    }
-
-    /* GENERAL */
-    section {
-      padding: 80px 22px;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .section-title small {
-      color: #bd6380;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-    }
-
-    .section-title h2 {
-      font-size: 42px;
-      margin-top: 8px;
-      color: #49323a;
-    }
-
-    .section-title p {
-      max-width: 600px;
-      margin: 12px auto;
-      color: #77636a;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-    }
-
-    /* CATEGORIES */
-    .categories {
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .category {
-      min-height: 300px;
-      border-radius: 18px;
-      overflow: hidden;
-      position: relative;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: end;
-      box-shadow: 0 10px 30px rgba(82,50,60,0.08);
-      transition: 0.4s;
-    }
-
-    .category:hover {
-      transform: translateY(-6px);
-    }
-
-    .category-content {
-      width: 100%;
-      padding: 25px;
-      color: white;
-      background: linear-gradient(transparent, rgba(45,25,32,0.75));
-    }
-
-    .category h3 {
-      font-size: 25px;
-      margin-bottom: 4px;
-    }
-
-    .category p {
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-    }
-
-    .necklaces {
-      background-image: url("https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=85");
-    }
-
-    .earrings {
-      background-image: url("https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=85");
-    }
-
-    .rings {
-      background-image: url("https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=85");
-    }
-
-    .watches {
-      background-image: url("https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=85");
-    }
-
-    .anklets {
-      background-image: url("https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=800&q=85");
-    }
-
-    .custom {
-      background-image: url("https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=800&q=85");
-    }
-
-    /* FEATURED */
-    .featured {
-      background: #f8e8ed;
-    }
-
-    .products {
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .product {
-      background: #fffaf7;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(82,50,60,0.08);
-      transition: 0.3s;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-    }
-
-    .product img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .product-info {
-      padding: 20px;
-      text-align: center;
-    }
-
-    .product-info h3 {
-      font-size: 21px;
-      margin-bottom: 5px;
-    }
-
-    .product-info p {
-      color: #bd6380;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-    }
-
-    /* ABOUT */
-    .about {
-      max-width: 950px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-    }
-
-    .about-image {
-      height: 430px;
-      border-radius: 20px;
-      background:
-        url("https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=85")
-        center/cover;
-    }
-
-    .about-text h2 {
-      font-size: 42px;
-      margin-bottom: 18px;
-    }
-
-    .about-text p {
-      font-family: Arial, sans-serif;
-      color: #6c5960;
-      font-size: 15px;
-      margin-bottom: 15px;
-    }
-
-    /* WHY US */
-    .features {
-      max-width: 1000px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      text-align: center;
-    }
-
-    .feature {
-      padding: 30px 20px;
-      background: white;
-      border-radius: 18px;
-      border: 1px solid #f0dce2;
-    }
-
-    .feature-icon {
-      font-size: 35px;
-      margin-bottom: 10px;
-    }
-
-    .feature h3 {
-      margin-bottom: 8px;
-    }
-
-    .feature p {
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      color: #76636a;
-    }
-
-    /* CTA */
-    .cta {
-      text-align: center;
-      background: #bd6380;
-      color: white;
-      padding: 75px 20px;
-    }
-
-    .cta h2 {
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
-
-    .cta p {
-      font-family: Arial, sans-serif;
-      margin-bottom: 20px;
-    }
-
-    .cta .button {
-      background: white;
-      color: #a94e6c;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #3f2931;
-      color: #f9e9ee;
-      text-align: center;
-      padding: 45px 20px;
-    }
-
-    footer h2 {
-      margin-bottom: 8px;
-    }
-
-    footer p {
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      opacity: 0.8;
-      margin: 6px;
-    }
-
-    .socials {
-      margin: 20px 0;
-    }
-
-    .socials a {
-      color: white;
-      text-decoration: none;
-      margin: 0 8px;
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-    }
-
-    /* MOBILE */
-    @media (max-width: 750px) {
-      nav {
-        padding: 15px;
-      }
-
-      .logo {
-        font-size: 21px;
-      }
-
-      nav ul {
-        gap: 10px;
-      }
-
-      nav a {
-        font-size: 11px;
-      }
-
-      .hero {
-        min-height: 78vh;
-      }
-
-      .hero h1 {
-        font-size: 50px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .categories,
-      .products,
-      .features {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .category {
-        min-height: 230px;
-      }
-
-      .about {
-        grid-template-columns: 1fr;
-      }
-
-      .about-image {
-        height: 330px;
-      }
-
-      .section-title h2,
-      .about-text h2,
-      .cta h2 {
-        font-size: 34px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      nav ul {
-        display: none;
-      }
-
-      .categories,
-      .products,
-      .features {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        font-size: 45px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lola's Ornament | Timeless Beauty</title>
+
+<style>
+
+:root{
+  --pink:#d96b91;
+  --dark:#8b3658;
+  --deep:#4a2534;
+  --soft:#fde8f0;
+  --cream:#fffaf8;
+  --white:#ffffff;
+  --text:#422832;
+  --muted:#765d68;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Georgia,"Times New Roman",serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.6;
+}
+
+/* HEADER */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(255,250,248,.96);
+  border-bottom:1px solid #f1ccd9;
+  backdrop-filter:blur(12px);
+}
+
+nav{
+  max-width:1150px;
+  margin:auto;
+  padding:18px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:27px;
+  font-weight:bold;
+  color:var(--dark);
+}
+
+.logo span{
+  color:var(--text);
+  font-style:italic;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:27px;
+}
+
+nav a{
+  text-decoration:none;
+  color:var(--text);
+  font-family:Arial,sans-serif;
+  font-size:13px;
+}
+
+nav a:hover{
+  color:var(--pink);
+}
+
+/* HERO */
+
+.hero{
+  min-height:88vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:70px 20px;
+
+  background:
+  linear-gradient(
+    rgba(255,225,236,.80),
+    rgba(255,248,250,.94)
+  ),
+  url("./1786692772375.jpg") center/cover;
+}
+
+.hero-content{
+  max-width:760px;
+}
+
+.eyebrow{
+  color:var(--dark);
+  font-family:Arial,sans-serif;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:17px;
+}
+
+.hero h1{
+  font-size:clamp(48px,9vw,84px);
+  line-height:1;
+  margin-bottom:23px;
+}
+
+.hero h1 span{
+  color:var(--pink);
+  font-style:italic;
+}
+
+.hero p{
+  max-width:600px;
+  margin:0 auto 28px;
+  color:var(--muted);
+  font-family:Arial,sans-serif;
+  font-size:15px;
+}
+
+/* BUTTONS */
+
+.button{
+  display:inline-block;
+  padding:14px 28px;
+  margin:5px;
+  border-radius:30px;
+  background:var(--pink);
+  color:white;
+  text-decoration:none;
+  font-family:Arial,sans-serif;
+  font-size:13px;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.button:hover{
+  background:var(--dark);
+  transform:translateY(-3px);
+}
+
+.outline{
+  background:transparent;
+  color:var(--dark);
+  border:1px solid var(--pink);
+}
+
+/* SECTIONS */
+
+section{
+  padding:85px 20px;
+}
+
+.heading{
+  text-align:center;
+  max-width:650px;
+  margin:0 auto 45px;
+}
+
+.heading small{
+  color:var(--pink);
+  font-family:Arial,sans-serif;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:4px;
+  text-transform:uppercase;
+}
+
+.heading h2{
+  font-size:42px;
+  margin:8px 0;
+}
+
+.heading p{
+  color:var(--muted);
+  font-family:Arial,sans-serif;
+  font-size:14px;
+}
+
+/* COLLECTION */
+
+.collection{
+  max-width:1150px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.card{
+  position:relative;
+  height:320px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(80,30,50,.12);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+}
+
+.card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.overlay{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:45px 20px 20px;
+  color:white;
+  background:linear-gradient(transparent,rgba(50,20,35,.9));
+}
+
+.overlay h3{
+  font-size:23px;
+}
+
+.overlay p{
+  font-family:Arial,sans-serif;
+  font-size:12px;
+}
+
+/* FEATURED */
+
+.featured{
+  background:var(--soft);
+}
+
+.products{
+  max-width:1150px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+
+.product{
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(80,30,50,.10);
+  transition:.3s;
+}
+
+.product:hover{
+  transform:translateY(-6px);
+}
+
+.product img{
+  width:100%;
+  height:330px;
+  object-fit:cover;
+  display:block;
+}
+
+.product-info{
+  padding:20px;
+  text-align:center;
+}
+
+.product-info h3{
+  font-size:19px;
+  margin-bottom:4px;
+}
+
+.product-info p{
+  color:var(--pink);
+  font-family:Arial,sans-serif;
+  font-size:12px;
+  font-weight:bold;
+}
+
+/* ABOUT */
+
+.story{
+  max-width:1050px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.story-image{
+  height:470px;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:15px 15px 0 var(--soft);
+}
+
+.story-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.story-text h2{
+  font-size:42px;
+  line-height:1.15;
+  margin:10px 0 20px;
+}
+
+.story-text p{
+  color:var(--muted);
+  font-family:Arial,sans-serif;
+  font-size:14px;
+  margin-bottom:15px;
+}
+
+/* WHY US */
+
+.features{
+  max-width:1050px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.feature{
+  text-align:center;
+  padding:32px 20px;
+  background:white;
+  border:1px solid #f2d3df;
+  border-radius:20px;
+  transition:.3s;
+}
+
+.feature:hover{
+  transform:translateY(-5px);
+  border-color:var(--pink);
+}
+
+.icon{
+  font-size:34px;
+  margin-bottom:9px;
+}
+
+.feature h3{
+  margin-bottom:7px;
+}
+
+.feature p{
+  color:var(--muted);
+  font-family:Arial,sans-serif;
+  font-size:13px;
+}
+
+/* GALLERY */
+
+.gallery{
+  max-width:1150px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1fr;
+  grid-auto-rows:260px;
+  gap:15px;
+}
+
+.gallery img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:16px;
+  display:block;
+  transition:.3s;
+}
+
+.gallery img:hover{
+  transform:scale(1.02);
+}
+
+.large{
+  grid-row:span 2;
+}
+
+/* CTA */
+
+.cta{
+  text-align:center;
+  color:white;
+  padding:85px 20px;
+  background:linear-gradient(135deg,var(--dark),var(--pink));
+}
+
+.cta h2{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.cta p{
+  font-family:Arial,sans-serif;
+  margin-bottom:20px;
+}
+
+.cta .button{
+  background:white;
+  color:var(--dark);
+}
+
+/* FOOTER */
+
+footer{
+  background:#3d2430;
+  color:#ffeaf1;
+  text-align:center;
+  padding:45px 20px;
+}
+
+footer h2{
+  color:white;
+  margin-bottom:7px;
+}
+
+footer p{
+  font-family:Arial,sans-serif;
+  font-size:12px;
+  opacity:.85;
+  margin:6px;
+}
+
+.socials{
+  margin:20px 0;
+}
+
+.socials a{
+  color:#ffeaf1;
+  text-decoration:none;
+  font-family:Arial,sans-serif;
+  font-size:13px;
+  margin:0 8px;
+}
+
+/* MOBILE */
+
+@media(max-width:750px){
+
+  nav{
+    padding:15px;
+  }
+
+  .logo{
+    font-size:21px;
+  }
+
+  nav ul{
+    gap:10px;
+  }
+
+  nav a{
+    font-size:10px;
+  }
+
+  .hero{
+    min-height:80vh;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .collection,
+  .products,
+  .features{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .card{
+    height:250px;
+  }
+
+  .story{
+    grid-template-columns:1fr;
+  }
+
+  .story-image{
+    height:360px;
+  }
+
+  .gallery{
+    grid-template-columns:1fr 1fr;
+    grid-auto-rows:220px;
+  }
+
+  .large{
+    grid-row:span 1;
+  }
+}
+
+@media(max-width:480px){
+
+  nav ul{
+    display:none;
+  }
+
+  .collection,
+  .products,
+  .features,
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .gallery{
+    grid-auto-rows:300px;
+  }
+
+  .hero h1{
+    font-size:43px;
+  }
+
+  .heading h2,
+  .story-text h2,
+  .cta h2{
+    font-size:34px;
+  }
+
+  section{
+    padding:70px 17px;
+  }
+}
+
+</style>
 </head>
 
 <body>
 
-  <header>
-    <nav>
-      <div class="logo">Lola's <span>Ornament</span></div>
+<header>
+<nav>
 
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#collection">Collection</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<div class="logo">
+Lola's <span>Ornament</span>
+</div>
 
-  <main>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#collection">Collection</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <div class="small-title">Lola's Ornament</div>
+</nav>
+</header>
 
-        <h1>Timeless <span>beauty</span>, crafted for you.</h1>
 
-        <p>
-          Discover elegant jewelry and carefully selected accessories
-          designed to make every moment feel special.
-        </p>
+<!-- HERO -->
 
-        <a href="#collection" class="button">Shop Collection</a>
-        <a href="#about" class="button button-outline">Our Story</a>
-      </div>
-    </section>
+<section class="hero" id="home">
 
-    <section id="collection">
-      <div class="section-title">
-        <small>Explore</small>
-        <h2>Our Collection</h2>
-        <p>
-          Find something beautiful for every style, occasion and special moment.
-        </p>
-      </div>
+<div class="hero-content">
 
-      <div class="categories">
+<div class="eyebrow">
+Welcome to Lola's Ornament
+</div>
 
-        <div class="category necklaces">
-          <div class="category-content">
-            <h3>Necklaces</h3>
-            <p>Elegant pieces made to shine.</p>
-          </div>
-        </div>
+<h1>
+Timeless <span>beauty</span>, crafted for you.
+</h1>
 
-        <div class="category earrings">
-          <div class="category-content">
-            <h3>Earrings</h3>
-            <p>Small details, beautiful impact.</p>
-          </div>
-        </div>
+<p>
+Discover beautiful jewelry and accessories designed
+to add elegance, confidence and sparkle to every moment.
+</p>
 
-        <div class="category rings">
-          <div class="category-content">
-            <h3>Rings</h3>
-            <p>Pieces worth wearing every day.</p>
-          </div>
-        </div>
+<a href="#collection" class="button">
+Explore Collection
+</a>
 
-        <div class="category watches">
-          <div class="category-content">
-            <h3>Wristwatches</h3>
-            <p>Classic style meets modern elegance.</p>
-          </div>
-        </div>
+<a href="#about" class="button outline">
+Our Story
+</a>
 
-        <div class="category anklets">
-          <div class="category-content">
-            <h3>Anklets</h3>
-            <p>Delicate beauty from every angle.</p>
-          </div>
-        </div>
+</div>
 
-        <div class="category custom">
-          <div class="category-content">
-            <h3>Customized Jewelry</h3>
-            <p>Create something uniquely yours.</p>
-          </div>
-        </div>
+</section>
 
-      </div>
-    </section>
 
-    <section class="featured">
-      <div class="section-title">
-        <small>Our favourites</small>
-        <h2>Featured Pieces</h2>
-        <p>Timeless accessories selected to elevate your everyday style.</p>
-      </div>
+<!-- COLLECTION -->
 
-      <div class="products">
+<section id="collection">
 
-        <div class="product">
-          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=85" alt="Elegant necklace">
-          <div class="product-info">
-            <h3>Classic Pearl Necklace</h3>
-            <p>Available to Order</p>
-          </div>
-        </div>
+<div class="heading">
 
-        <div class="product">
-          <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=85" alt="Elegant earrings">
-          <div class="product-info">
-            <h3>Elegant Earrings</h3>
-            <p>Available to Order</p>
-          </div>
-        </div>
+<small>Our Collection</small>
 
-        <div class="product">
-          <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=85" alt="Beautiful ring">
-          <div class="product-info">
-            <h3>Signature Ring</h3>
-            <p>Available to Order</p>
-          </div>
-        </div>
+<h2>
+Something Beautiful For You
+</h2>
 
-      </div>
-    </section>
+<p>
+Explore carefully selected pieces made to complement
+your style and celebrate your special moments.
+</p>
 
-    <section id="about">
-      <div class="about">
+</div>
 
-        <div class="about-image"></div>
 
-        <div class="about-text">
-          <div class="section-title" style="text-align:left; margin-bottom:20px;">
-            <small>Our story</small>
-            <h2>Made to make you feel beautiful.</h2>
-          </div>
+<div class="collection">
 
-          <p>
-            At Lola's Ornament, we believe jewelry is more than an accessory.
-            It is a reflection of your personality, your memories and your style.
-          </p>
+<div class="card">
+<img src="./1786692772375.jpg" alt="Heart necklace">
+<div class="overlay">
+<h3>Necklaces</h3>
+<p>Elegant pieces for every occasion.</p>
+</div>
+</div>
 
-          <p>
-            Every piece is carefully selected with elegance, quality and
-            timeless beauty in mind.
-          </p>
+<div class="card">
+<img src="./1786692793153.jpg" alt="Earrings">
+<div class="overlay">
+<h3>Earrings</h3>
+<p>Small details, beautiful impact.</p>
+</div>
+</div>
 
-          <a href="#contact" class="button">Get in Touch</a>
-        </div>
+<div class="card">
+<img src="./1786692820584.jpg" alt="Heart anklet">
+<div class="overlay">
+<h3>Anklets</h3>
+<p>Delicate beauty from every angle.</p>
+</div>
+</div>
 
-      </div>
-    </section>
+<div class="card">
+<img src="./1786692762781.jpg" alt="Watch and jewelry set">
+<div class="overlay">
+<h3>Watches</h3>
+<p>Style that keeps up with you.</p>
+</div>
+</div>
 
-    <section>
-      <div class="section-title">
-        <small>Why Lola's Ornament</small>
-        <h2>Made for your moments</h2>
-      </div>
+<div class="card">
+<img src="./1786692780763.jpg" alt="Pink jewelry box">
+<div class="overlay">
+<h3>Jewelry Boxes</h3>
+<p>Keep your treasures beautiful and safe.</p>
+</div>
+</div>
 
-      <div class="features">
+<div class="card">
+<img src="./1786692810951.jpg" alt="Infinity necklace">
+<div class="overlay">
+<h3>Signature Pieces</h3>
+<p>Unique designs made to stand out.</p>
+</div>
+</div>
 
-        <div class="feature">
-          <div class="feature-icon">✨</div>
-          <h3>Elegant Designs</h3>
-          <p>Beautiful pieces selected to complement your personal style.</p>
-        </div>
+</div>
 
-        <div class="feature">
-          <div class="feature-icon">💎</div>
-          <h3>Quality First</h3>
-          <p>We focus on pieces that look beautiful and feel special.</p>
-        </div>
+</section>
 
-        <div class="feature">
-          <div class="feature-icon">💗</div>
-          <h3>Made With Love</h3>
-          <p>Your happiness and satisfaction are at the heart of our brand.</p>
-        </div>
 
-      </div>
-    </section>
+<!-- FEATURED -->
 
-    <section class="cta" id="contact">
-      <h2>Find your next favourite piece.</h2>
-      <p>Ready to add a little sparkle to your collection?</p>
+<section class="featured">
 
-      <a
-        href="https://wa.me/2349112377577"
-        class="button"
-        target="_blank">
-        Order on WhatsApp
-      </a>
-    </section>
+<div class="heading">
 
-  </main>
-  
-  <footer>
-    <h2>Lola's Ornament</h2>
-    <p>Timeless beauty, crafted for you.</p>
+<small>Shop Our Favourites</small>
 
-    <div class="socials">
-      <a href="#">Instagram</a>
-      <a href="#">Facebook</a>
-      <a href="#">TikTok</a>
-    </div>
+<h2>
+Featured Pieces
+</h2>
 
-    <p>© 2026 Lola's Ornament. All rights reserved.</p>
-  </footer>
+<p>
+Beautiful pieces selected especially for you.
+</p>
+
+</div>
+
+
+<div class="products">
+
+<div class="product">
+
+<img src="./1786692772375.jpg" alt="Jewelry set">
+
+<div class="product-info">
+<h3>Jewelry Collection</h3>
+<p>Available to Order</p>
+</div>
+
+</div>
+
+
+<div class="product">
+
+<img src="./1786692810951.jpg" alt="Infinity necklace">
+
+<div class="product-info">
+<h3>Signature Necklace</h3>
+<p>Available to Order</p>
+</div>
+
+</div>
+
+
+<div class="product">
+
+<img src="./1786692829842.jpg" alt="Butterfly necklace">
+
+<div class="product-info">
+<h3>Butterfly Necklace</h3>
+<p>Available to Order</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="story">
+
+<div class="story-image">
+
+<img src="./1786692780763.jpg" alt="Lola's Ornament jewelry box">
+
+</div>
+
+
+<div class="story-text">
+
+<div class="eyebrow">
+Our Story
+</div>
+
+<h2>
+Beauty in every little detail.
+</h2>
+
+<p>
+At Lola's Ornament, we believe jewelry is more
+than an accessory. It is a beautiful way to express
+your personality, celebrate yourself and create memories.
+</p>
+
+<p>
+Every piece is carefully selected with elegance,
+quality and timeless beauty in mind.
+</p>
+
+<a href="#contact" class="button">
+Shop With Us
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- WHY US -->
+
+<section>
+
+<div class="heading">
+
+<small>Why Choose Us</small>
+
+<h2>
+The Lola's Ornament Experience
+</h2>
+
+</div>
+
+
+<div class="features">
+
+<div class="feature">
+
+<div class="icon">✨</div>
+
+<h3>Beautiful Designs</h3>
+
+<p>
+Carefully selected pieces designed
+to complement your personal style.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">💎</div>
+
+<h3>Quality & Style</h3>
+
+<p>
+Elegant accessories selected with
+beauty and everyday style in mind.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="icon">💗</div>
+
+<h3>Made With Love</h3>
+
+<p>
+Your happiness and satisfaction
+are at the heart of our brand.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery" class="featured">
+
+<div class="heading">
+
+<small>Our Pieces</small>
+
+<h2>
+Lola's Gallery
+</h2>
+
+<p>
+A glimpse of the beauty available at Lola's Ornament.
+</p>
+
+</div>
+
+
+<div class="gallery">
+
+<img class="large"
+src="./1786692772375.jpg"
+alt="Lola's jewelry">
+
+<img
+src="./1786692793153.jpg"
+alt="Lola's earrings">
+
+<img
+src="./1786692820584.jpg"
+alt="Lola's anklet">
+
+<img
+src="./1786692810951.jpg"
+alt="Lola's necklace">
+
+<img
+src="./1786692780763.jpg"
+alt="Lola's jewelry box">
+
+<img
+src="./1786692762781.jpg"
+alt="Lola's watch set">
+
+<img
+src="./1786692829842.jpg"
+alt="Lola's butterfly necklace">
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="cta" id="contact">
+
+<h2>
+Ready to find your favourite piece?
+</h2>
+
+<p>
+Message Lola's Ornament on WhatsApp to place your order.
+</p>
+
+<a
+href="https://wa.me/2349112377577"
+class="button"
+target="_blank">
+
+Order on WhatsApp
+
+</a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2>Lola's Ornament</h2>
+
+<p>
+Timeless beauty, crafted for you.
+</p>
+
+<div class="socials">
+
+<a href="#">Instagram</a>
+<a href="#">Facebook</a>
+<a href="#">TikTok</a>
+
+</div>
+
+<p>
+WhatsApp: 09112377577
+</p>
+
+<p>
+© 2026 Lola's Ornament. All rights reserved.
+</p>
+
+</footer>
 
 </body>
-            </html>
+  </html>
